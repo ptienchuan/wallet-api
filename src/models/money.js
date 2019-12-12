@@ -8,16 +8,7 @@ const schema = new mongoose.Schema({
 		maxlength: 50,
 		trim: true
 	},
-	value: {
-		type: Number,
-		min: 0,
-		default: 0,
-	},
-	isPlus: {
-		type: Boolean,
-		default: true
-	},
-	note: {
+	compartment: {
 		type: ObjectId,
 		required: true
 	},
@@ -27,4 +18,4 @@ const schema = new mongoose.Schema({
 	}
 })
 
-module.exports = mongoose.model(schema)
+module.exports = mongoose.model('Money', schema)
