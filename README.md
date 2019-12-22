@@ -1,1 +1,1 @@
-# Personal finance management API
+# Wallet management API
