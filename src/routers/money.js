@@ -6,12 +6,8 @@ router.post('/', auth, async (req, res) => {
 	res.send('creating money endpoint')
 })
 
-// router.get('/:id', auth, async (req, res) => {
-// 	res.send('fetching a money endpoint')
-// })
-
-router.get('/:id/actions', auth, async (req, res) => {
-	res.send('fetching a money and all actions endpoint')
+router.get('/:id', auth, async (req, res) => {
+	res.send('fetching a money endpoint')
 })
 
 router.put('/:id', auth, async (req, res) => {

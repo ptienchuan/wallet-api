@@ -8,10 +8,14 @@ const schema = new mongoose.Schema({
 		maxlength: 50,
 		trim: true
 	},
-	creditBalance: {
+	budget: {
 		type: Number,
 		min: 0,
-		default: 0,
+		default: 0
+	},
+	wallet: {
+		type: ObjectId,
+		required: true
 	},
 	owner: {
 		type: ObjectId,

@@ -6,17 +6,17 @@ router.post('/', auth, async (req, res) => {
 	res.send('creating compartment endpoint')
 })
 
-router.get('/', auth, async (req, res) => {
-	res.send('fetching compartments endpoint')
-})
+// router.get('/', auth, async (req, res) => {
+// 	res.send('fetching compartments endpoint')
+// })
 
 router.get('/:id', auth, async (req, res) => {
 	res.send('fetching a compartment endpoint')
 })
 
-router.get('/:id/money', auth, async (req, res) => {
-	res.send('fetching a compartment and all money endpoint')
-})
+// router.get('/:id/money', auth, async (req, res) => {
+// 	res.send('fetching a compartment and all money endpoint')
+// })
 
 router.put('/:id', auth, async (req, res) => {
 	res.send('changing a compartment endpoint')

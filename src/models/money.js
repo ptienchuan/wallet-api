@@ -8,6 +8,20 @@ const schema = new mongoose.Schema({
 		maxlength: 50,
 		trim: true
 	},
+	cost: {
+		type: Number,
+		min: 0,
+		default: 0
+	},
+	spended: {
+		type: Boolean,
+		default: false
+	},
+	note: {
+		type: String,
+		maxlength: 150,
+		trim: true
+	},
 	compartment: {
 		type: ObjectId,
 		required: true
