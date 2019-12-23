@@ -24,12 +24,20 @@ const schema = new mongoose.Schema({
 	},
 	compartment: {
 		type: ObjectId,
+		ref: 'Compartment',
 		required: true
 	},
 	owner: {
 		type: ObjectId,
+		ref: 'User',
 		required: true
 	}
 })
+
+schema.methods.toJSON = function () {
+	const moneyObject = this.toObject()
+	delete moneyObject.owner
+	return moneyObject
+}
 
 module.exports = mongoose.model('Money', schema)
