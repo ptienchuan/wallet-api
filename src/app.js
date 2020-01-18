@@ -1,5 +1,6 @@
 require('./config/database')
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 const userRouter = require('./routers/user')
@@ -8,6 +9,7 @@ const compartmentRouter = require('./routers/compartment')
 const moneyRouter = require('./routers/money')
 
 // assign middlewares
+app.use(cors())
 app.use(express.json())
 
 // assign routers

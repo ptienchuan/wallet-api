@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
 		trim: true,
 		lowercase: true,
 		unique: true,
-		validate: function(value) {
+		validate: function (value) {
 			if (!validator.isEmail(value)) {
 				throw new Error('The email is invalid')
 			}
@@ -36,12 +36,17 @@ const schema = new mongoose.Schema({
 	timestamps: true
 })
 
-schema.statics.findByCredentials = async function({ email, password }) {
+schema.statics.findByCredentials = async function ({
+	email,
+	password
+}) {
 	if (!email || !password) {
 		throw new Error()
 	}
 
-	const user = await this.findOne({ email })
+	const user = await this.findOne({
+		email
+	})
 	if (!user) {
 		throw new Error()
 	}
@@ -54,7 +59,7 @@ schema.statics.findByCredentials = async function({ email, password }) {
 	return user
 }
 
-schema.methods.toJSON = function() {
+schema.methods.toJSON = function () {
 	const user = this
 	const resObject = user.toObject()
 
@@ -65,18 +70,24 @@ schema.methods.toJSON = function() {
 	return resObject
 }
 
-schema.methods.generateToken = async function() {
+schema.methods.generateToken = async function () {
 	// create a token
-	const token = await jwt.sign({ _id: this._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1 days' })
+	const token = await jwt.sign({
+		_id: this._id
+	}, process.env.JWT_SECRET_KEY, {
+		expiresIn: '1 days'
+	})
 
 	// save the token to database
-	this.tokens = this.tokens.concat({token})
+	this.tokens = this.tokens.concat({
+		token
+	})
 	await this.save()
 
 	return token
 }
 
-schema.pre('save', async function(){
+schema.pre('save', async function () {
 	if (this.isModified('password')) {
 		this.password = await bcrypt.hash(this.password, parseInt(process.env.HASHED_ROUND))
 	}
